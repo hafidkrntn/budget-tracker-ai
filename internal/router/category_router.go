@@ -1,7 +1,7 @@
 package router
 
 import (
-	"backend-go/module/handler/category"
+	"backend-go/internal/handler/category"
 
 	"github.com/gin-gonic/gin"
 )

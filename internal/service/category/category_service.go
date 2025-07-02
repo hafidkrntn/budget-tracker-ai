@@ -1,10 +1,10 @@
 package category
 
 import (
-	"backend-go/module/model/form"
-	"backend-go/module/model/migrate"
-	"backend-go/module/model/response"
-	"backend-go/module/repository/category"
+	"backend-go/internal/model/form"
+	"backend-go/internal/model/migrate"
+	"backend-go/internal/model/response"
+	"backend-go/internal/repository/category"
 	"backend-go/pkg/pagination"
 	"fmt"
 )

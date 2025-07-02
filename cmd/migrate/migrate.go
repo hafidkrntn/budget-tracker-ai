@@ -2,7 +2,7 @@ package main
 
 import (
 	"backend-go/config"
-	"backend-go/module/model/migrate"
+	"backend-go/internal/model/migrate"
 	"log"
 )
 

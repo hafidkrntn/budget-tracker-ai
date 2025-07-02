@@ -1,8 +1,8 @@
-package transaction
+package category
 
 import (
-	"backend-go/module/model/form"
-	"backend-go/module/service/transaction"
+	"backend-go/internal/model/form"
+	"backend-go/internal/service/category"
 	"backend-go/pkg/response"
 	"runtime"
 	"strconv"
@@ -10,8 +10,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateTransaction(c *gin.Context) {
-	var req form.TransactionForm
+func CreateCategory(c *gin.Context) {
+	var req form.Category
 	_, file, line, _ := runtime.Caller(0)
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -20,7 +20,7 @@ func CreateTransaction(c *gin.Context) {
 		return
 	}
 
-	results, err := transaction.CreateTransaction(req)
+	results, err := category.CreateCategory(req)
 	if err != nil {
 		response.SetErrorFailedCreate(file, line)
 		response.SetFailedCreateResponse(c, err)
@@ -30,19 +30,17 @@ func CreateTransaction(c *gin.Context) {
 	response.SetSuccessCreateResponse(c, results)
 }
 
-func GetTransactionPagination(c *gin.Context) {
+func GetCategoryPagination(c *gin.Context) {
 	_, file, line, _ := runtime.Caller(0)
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
 	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "10"))
-	search := c.DefaultQuery("search", "none")
 
-	params := form.TransactionParams{
-		Page:   page,
-		Limit:  limit,
-		Search: search,
+	params := form.CategoryParams{
+		Page:  page,
+		Limit: limit,
 	}
 
-	results, err := transaction.GetTransactionPagination(params)
+	results, err := category.GetAllPagination(params)
 	if err != nil {
 		response.SetErrorFailedRead(file, line)
 		response.SetFailedReadResponse(c, err)
@@ -52,12 +50,25 @@ func GetTransactionPagination(c *gin.Context) {
 	response.SetSuccessReadResponse(c, results)
 }
 
-func GetTransactionById(c *gin.Context) {
+func GetCategory(c *gin.Context) {
+	_, file, line, _ := runtime.Caller(0)
+
+	results, err := category.GetAllCategory()
+	if err != nil {
+		response.SetErrorFailedRead(file, line)
+		response.SetFailedReadResponse(c, err)
+		return
+	}
+
+	response.SetSuccessReadResponse(c, results)
+}
+
+func GetCategoryById(c *gin.Context) {
 	_, file, line, _ := runtime.Caller(0)
 
 	id := c.Param("id")
 
-	results, err := transaction.GetTransactionById(id)
+	results, err := category.GetCategoryById(id)
 	if err != nil {
 		response.SetErrorFailedRead(file, line)
 		response.SetFailedReadResponse(c, err)
@@ -67,8 +78,8 @@ func GetTransactionById(c *gin.Context) {
 	response.SetSuccessReadResponse(c, results)
 }
 
-func UpdateTransaction(c *gin.Context) {
-	var req form.TransactionForm
+func UpdateCategory(c *gin.Context) {
+	var req form.Category
 	_, file, line, _ := runtime.Caller(0)
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -77,7 +88,7 @@ func UpdateTransaction(c *gin.Context) {
 		return
 	}
 
-	results, err := transaction.CreateTransaction(req)
+	results, err := category.UpdateCategory(req)
 	if err != nil {
 		response.SetErrorFailedUpdate(file, line)
 		response.SetFailedUpdateResponse(c, err)
@@ -87,11 +98,11 @@ func UpdateTransaction(c *gin.Context) {
 	response.SetSuccessUpdateResponse(c, results)
 }
 
-func DeleteTransaction(c *gin.Context) {
+func DeleteCategory(c *gin.Context) {
 	id := c.Param("id")
 	_, file, line, _ := runtime.Caller(0)
 
-	results, err := transaction.DeleteTransaction(id)
+	results, err := category.DeletedCategory(id)
 	if err != nil {
 		response.SetErrorFailedDelete(file, line)
 		response.SetFailedDeleteResponse(c, err)

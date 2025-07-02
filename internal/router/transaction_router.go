@@ -1,7 +1,7 @@
 package router
 
 import (
-	"backend-go/module/handler/transaction"
+	"backend-go/internal/handler/transaction"
 
 	"github.com/gin-gonic/gin"
 )

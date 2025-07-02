@@ -2,7 +2,7 @@ package response
 
 import (
 	"backend-go/constants"
-	logerror "backend-go/module/repository/log_error"
+	logerror "backend-go/internal/repository/log_error"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

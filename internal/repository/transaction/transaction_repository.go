@@ -2,11 +2,11 @@ package transaction
 
 import (
 	"backend-go/config"
-	"backend-go/module/model/form"
-	"backend-go/module/model/migrate"
-	"backend-go/module/model/response"
-	"backend-go/module/repository/category"
-	"backend-go/module/repository/users"
+	"backend-go/internal/model/form"
+	"backend-go/internal/model/migrate"
+	"backend-go/internal/model/response"
+	"backend-go/internal/repository/category"
+	"backend-go/internal/repository/users"
 	"backend-go/pkg/pagination"
 	"backend-go/pkg/utilities"
 	"fmt"

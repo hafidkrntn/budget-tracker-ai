@@ -1,7 +1,7 @@
 package router
 
 import (
-	"backend-go/module/handler/auth"
+	"backend-go/internal/handler/auth"
 
 	"github.com/gin-gonic/gin"
 )

@@ -2,9 +2,9 @@ package category
 
 import (
 	"backend-go/config"
-	"backend-go/module/model/form"
-	"backend-go/module/model/migrate"
-	"backend-go/module/model/response"
+	"backend-go/internal/model/form"
+	"backend-go/internal/model/migrate"
+	"backend-go/internal/model/response"
 	"backend-go/pkg/pagination"
 	"fmt"
 	"time"

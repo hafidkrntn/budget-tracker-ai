@@ -2,7 +2,7 @@ package router
 
 import (
 	"backend-go/middleware"
-	"backend-go/module/router"
+	"backend-go/internal/router"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

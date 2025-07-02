@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"backend-go/module/model/form"
-	"backend-go/module/service/auth"
+	"backend-go/internal/model/form"
+	"backend-go/internal/service/auth"
 	"backend-go/pkg/response"
 	"runtime"
 

@@ -1,7 +1,7 @@
 package logerror
 
 import (
-	"backend-go/module/model/migrate"
+	"backend-go/internal/model/migrate"
 	"strconv"
 	"time"
 
