@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -18,6 +19,7 @@ func InitDB() {
 	}
 
 	dsn := os.Getenv("DB_DSN")
+	fmt.Println(dsn)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("failed to connect database: ", err)

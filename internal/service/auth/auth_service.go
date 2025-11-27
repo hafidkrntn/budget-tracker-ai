@@ -16,9 +16,9 @@ func Register(req form.RegisterForm) (*migrate.User, error) {
 		return nil, err
 	}
 
-	verify, _ := users.GetUserByEmail(req.Email)
-	if verify.Email == req.Email {
-		return nil, err
+	verify, err := users.GetUserByEmail(req.Email)
+	if err == nil && verify.Email == req.Email {
+			return nil, fmt.Errorf("email already in use")
 	}
 
 	user := migrate.User{
