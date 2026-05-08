@@ -6,9 +6,6 @@ import (
 )
 
 func main() {
-	config.InitDB()
-
-	r := router.SetupRouter(config.DbConn)
-
-	r.Run(":8080") // default port
+	db := config.InitDB()
+	router.InitialRouter(db)
 }

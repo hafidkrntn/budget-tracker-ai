@@ -12,12 +12,6 @@ type TransactionForm struct {
 	Amount     float64   `json:"amount" binding:"required,gt=0"`
 	Date       time.Time `json:"date" binding:"required"`
 	Note       string    `json:"note"`
-	UserId     uuid.UUID `json:"user_id" binding:"required"` // harus UUID valid
+	UserId     uuid.UUID `json:"-"`
 	CategoryId uuid.UUID `json:"category_id" binding:"required"`
-}
-
-type TransactionParams struct {
-	Page   int    `json:"page"`
-	Limit  int    `json:"limit"`
-	Search string `json:"search"`
 }

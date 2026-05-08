@@ -5,7 +5,6 @@ import (
 	"backend-go/internal/service/category"
 	"backend-go/pkg/response"
 	"runtime"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -32,15 +31,13 @@ func CreateCategory(c *gin.Context) {
 
 func GetCategoryPagination(c *gin.Context) {
 	_, file, line, _ := runtime.Caller(0)
-	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
-	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "10"))
-
-	params := form.CategoryParams{
-		Page:  page,
-		Limit: limit,
+	params := &form.Params{}
+	if err := c.ShouldBindQuery(params); err != nil {
+		response.SetFailedReadResponse(c, err)
+		return
 	}
 
-	results, err := category.GetAllPagination(params)
+	results, err := category.GetAllPagination(*params)
 	if err != nil {
 		response.SetErrorFailedRead(file, line)
 		response.SetFailedReadResponse(c, err)
