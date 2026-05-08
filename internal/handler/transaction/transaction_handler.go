@@ -61,7 +61,7 @@ func GetTransactionPagination(c *gin.Context) {
 	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "10"))
 	search := c.DefaultQuery("search", "")
 
-	params := form.TransactionParams{
+	params := form.Params{
 		Page:   page,
 		Limit:  limit,
 		Search: search,
